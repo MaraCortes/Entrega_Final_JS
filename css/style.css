@@ -1,0 +1,188 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #b24bc7;
+  color: #333;
+  overflow-x: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  justify-items: baseline;
+  padding: 9rem 6rem;
+  background-image: url(img/Fondo_rosa.webp);
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+
+h1 {
+  font-size: 3rem; 
+  text-align: center;
+  margin: 5px 0px;
+  color: rgb(4, 92, 92);
+}
+
+h2 {
+  text-align: center;
+  color: rgb(70, 8, 59);
+
+}
+
+.image-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 50px;
+  align-items: center;
+}
+
+
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  margin-bottom: 20px;
+  margin: 50px;
+}
+
+.imagenes {
+  width: 320px;
+  height: 340px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+
+}
+
+.text-image {
+  text-align: center;
+  margin: 10px;
+  color: rgb(12, 41, 87);
+  font-size: 1.5rem;
+}
+
+
+.btnComprar {
+  padding: 8px 10px;
+  margin-top: 20px;
+  border-radius: 10%;
+  background-color: rgb(176, 233, 233);  
+  font-size: 16px;
+  cursor: pointer;
+
+}
+
+.btnComprar:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+  background-color: rgb(68, 68, 134);
+}
+
+.btnVaciar {
+  padding: 8px 10px;
+  margin-top: 20px;
+  border-radius: 10%;
+  background-color: rgb(119, 211, 211);
+  color: #f30a0a;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+
+
+#carrito {
+  position: fixed;
+  top: 140px;
+  right: 30px;
+  background-color: white;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  display: none;
+}
+
+#total{
+  font-weight: 700;
+  color: #000; 
+}
+
+
+#iconoCarrito {
+  width: 70px;
+  cursor: pointer;
+  position: fixed;
+  top: 60px;
+  right: 30px;
+  border-radius: 100%;
+  z-index: 1000;
+}
+
+#iconoCarrito:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+
+#listaCarrito li {
+  list-style: none;
+  border-bottom: 1px solid #eee;
+  padding: 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#listaCarrito li:hover {
+  background-color: #ffe5e5;
+}
+
+
+.image-section img:hover {
+  transform: scale(1.02);
+}
+
+footer .infoFooter {
+  text-align: center;
+  padding: 15rem;
+  background-color: #cb99dc;
+  font-size: 0.9rem;
+}
+
+footer .infoFooter p {
+  color: rgb(11, 10, 11);
+}
+
+footer .nombreDesarrolladores {
+  text-align: center;
+  padding: 2rem;
+  background-color: #201d1d;
+  font-size: 0.9rem;
+
+}
+
+footer .nombreDesarrolladores p {
+  color: azure;
+}
+
+/* Animación fade-in al hacer scroll */
+/* .fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+} */

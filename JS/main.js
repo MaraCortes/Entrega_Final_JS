@@ -1,0 +1,109 @@
+
+const productos = [
+  { nombre: 'Dona Chispas', precio: 1200, imagen: 'css/img/dona 1.jpg' },
+  { nombre: 'Dona Glaseada', precio: 1350, imagen: 'css/img/dona 11.jpg' },
+  { nombre: 'Dona Frutilla', precio: 1400, imagen: 'css/img/dona 3.jpg' },
+  { nombre: 'Dona Rellena', precio: 1500, imagen: 'css/img/dona 4.jpg' },
+  { nombre: 'Dona Vainilla', precio: 1150, imagen: 'css/img/dona 5.jpg' },
+  { nombre: 'Dona Coco', precio: 1000, imagen: 'css/img/dona 6.jpg' },
+  { nombre: 'Dona Limón', precio: 1200, imagen: 'css/img/dona 7.jpg' },
+  { nombre: 'Dona Nutella', precio: 1300, imagen: 'css/img/dona 11.jpg' },   
+  { nombre: 'Dona Chocolate Blanco', precio: 1250, imagen: 'css/img/dona 2.jpg' }
+];
+
+
+
+const contenedor = document.getElementById('productos');
+const listaCarrito = document.getElementById('listaCarrito');
+const totalElemento = document.getElementById('total');
+const btnVaciar = document.getElementById('vaciarCarrito');
+const iconoCarrito = document.getElementById('iconoCarrito');
+const carritoElemento = document.getElementById('carrito');
+
+let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+let total = carrito.reduce((acc, prod) => acc + prod.precio, 0);
+actualizarTotal();
+
+
+
+productos.forEach(producto => {
+  const div = document.createElement('div');
+  div.className = 'image-container fade-in';
+
+  div.innerHTML = `
+    <img class="imagenes" src="${producto.imagen}" alt="${producto.nombre}">
+    <div class="text-image">
+      <h2>${producto.nombre}</h2>
+      <p class="precio"><strong>$${producto.precio}</strong></p>
+      <button class="btnComprar">COMPRAR</button>
+    </div>
+  `;
+
+  const boton = div.querySelector('.btnComprar');
+  boton.addEventListener('click', () => {
+    agregarAlCarrito(producto);
+  });
+
+  contenedor.appendChild(div);
+});
+
+
+carrito.forEach(prod => crearElementoEnCarrito(prod));
+
+function agregarAlCarrito(producto) {
+  carrito.push(producto);
+  crearElementoEnCarrito(producto);
+  total += producto.precio;
+  actualizarTotal();
+  guardarCarrito();
+}
+
+function crearElementoEnCarrito(producto) {
+  const item = document.createElement('li');
+  item.textContent = `${producto.nombre} - $${producto.precio}`;
+
+  item.addEventListener('click', () => {
+    const confirmar = confirm('¿Eliminar este producto del carrito?');
+    if (confirmar) {
+      listaCarrito.removeChild(item);
+      total -= producto.precio;
+      carrito = carrito.filter(p => p !== producto);
+      actualizarTotal();
+      guardarCarrito();
+    }
+  });
+
+  listaCarrito.appendChild(item);
+}
+
+function actualizarTotal() {
+  totalElemento.textContent = `Total: $${total}`;
+}
+
+function guardarCarrito() {
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+
+
+iconoCarrito.addEventListener('click', () => {
+  if (carritoElemento.style.display === 'block') {
+    carritoElemento.style.display = 'none';
+  } else {
+    carritoElemento.style.display = 'block';
+  }
+});
+
+
+btnVaciar.addEventListener('click', () => {
+  const confirmar = confirm('¿Vaciar todo el carrito?');
+  if (confirmar) {
+    carrito = [];
+    listaCarrito.innerHTML = '';
+    total = 0;
+    actualizarTotal();
+    guardarCarrito();
+  }
+});
+
+
