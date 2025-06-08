@@ -1,14 +1,14 @@
 
 const productos = [
-  { nombre: 'Dona Chispas', precio: 1200, imagen: 'css/img/dona 1.jpg' },
-  { nombre: 'Dona Glaseada', precio: 1350, imagen: 'css/img/dona 11.jpg' },
-  { nombre: 'Dona Frutilla', precio: 1400, imagen: 'css/img/dona 3.jpg' },
-  { nombre: 'Dona Rellena', precio: 1500, imagen: 'css/img/dona 4.jpg' },
-  { nombre: 'Dona Vainilla', precio: 1150, imagen: 'css/img/dona 5.jpg' },
-  { nombre: 'Dona Coco', precio: 1000, imagen: 'css/img/dona 6.jpg' },
-  { nombre: 'Dona Limón', precio: 1200, imagen: 'css/img/dona 7.jpg' },
-  { nombre: 'Dona Nutella', precio: 1300, imagen: 'css/img/dona 11.jpg' },   
-  { nombre: 'Dona Chocolate Blanco', precio: 1250, imagen: 'css/img/dona 2.jpg' }
+  { nombre: 'Marquise', precio: 1200, imagen: 'css/img/marquise.jpg' },
+  { nombre: 'Lemon Pie', precio: 1350, imagen: 'css/img/cheeseCakeFrutos Rojos.jpg' },
+  { nombre: 'Pavlova', precio: 1400, imagen: 'css/img/pavlova.jpg' },
+  { nombre: 'Selva Negra', precio: 1500, imagen: 'css/img/selvaNegra.jpg' },
+  { nombre: 'Tarta de Frutillas', precio: 1150, imagen: 'css/img/tartaFrutosRojos.jpeg' },
+  { nombre: 'Rogel', precio: 1000, imagen: 'css/img/rogel.jpg' },
+  { nombre: 'Queso y Naranja', precio: 1200, imagen: 'css/img/quesoNaranja.jpg' },
+  { nombre: 'Limón y Arándanos', precio: 1300, imagen: 'css/img/tartaLimonArandanos.jpg' },
+  { nombre: 'Tiramisú', precio: 1250, imagen: 'css/img/tiramisu.jpg' }
 ];
 
 
@@ -31,7 +31,10 @@ productos.forEach(producto => {
   div.className = 'image-container fade-in';
 
   div.innerHTML = `
-    <img class="imagenes" src="${producto.imagen}" alt="${producto.nombre}">
+    <div>  
+      <img class="imagenes" src="${producto.imagen}" alt="${producto.nombre}">
+    </div>
+
     <div class="text-image">
       <h2>${producto.nombre}</h2>
       <p class="precio"><strong>$${producto.precio}</strong></p>
