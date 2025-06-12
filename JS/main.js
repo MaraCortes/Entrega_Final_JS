@@ -1,21 +1,4 @@
 
-const productos = [
-  { nombre: 'Marquise', precio: 1200, imagen: 'css/img/marquise.jpg' },
-  { nombre: 'Lemon Pie', precio: 1350, imagen: 'css/img/cheeseCakeFrutos Rojos.jpg' },
-  { nombre: 'Pavlova', precio: 1400, imagen: 'css/img/pavlova.jpg' },
-  { nombre: 'Selva Negra', precio: 1500, imagen: 'css/img/selvaNegra.jpg' },
-  { nombre: 'Tarta de Frutillas', precio: 1150, imagen: 'css/img/tartaFrutosRojos.jpeg' },
-  { nombre: 'Rogel', precio: 1000, imagen: 'css/img/rogel.jpg' },
-  { nombre: 'Queso y Naranja', precio: 1200, imagen: 'css/img/quesoNaranja.jpg' },
-  { nombre: 'Limón y Arándanos', precio: 1300, imagen: 'css/img/tartaLimonArandanos.jpg' },
-  { nombre: 'Tiramisú', precio: 1250, imagen: 'css/img/tiramisu.jpg' },
-  { nombre: 'Queso y Naranja', precio: 1200, imagen: 'css/img/quesoNaranja.jpg' },
-  { nombre: 'Limón y Arándanos', precio: 1300, imagen: 'css/img/tartaLimonArandanos.jpg' },
-  { nombre: 'Tiramisú', precio: 1250, imagen: 'css/img/tiramisu.jpg' }
-];
-
-
-
 const contenedor = document.getElementById('productos');
 const listaCarrito = document.getElementById('listaCarrito');
 const totalElemento = document.getElementById('total');
