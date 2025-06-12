@@ -1,5 +1,17 @@
 
-const contenedor = document.getElementById('productos');
+let productos = [];
+
+fetch(`../assets/json/productos.json`)
+.then(response => response.json())
+.then(data =>{
+  productos = data.productos;
+  inicializarPagina();
+})
+
+.catch(error => console.error("Error al cargar los productos", error));
+
+function inicializarPagina(){
+  const contenedor = document.getElementById(`productos`);
 const listaCarrito = document.getElementById('listaCarrito');
 const totalElemento = document.getElementById('total');
 const btnVaciar = document.getElementById('vaciarCarrito');
@@ -37,7 +49,7 @@ productos.forEach(producto => {
 });
 
 
-// carrito.forEach(prod => crearElementoEnCarrito(prod));
+carrito.forEach(prod => crearElementoEnCarrito(prod));
 
 function agregarAlCarrito(producto) {
   carrito.push(producto);
@@ -95,6 +107,6 @@ btnVaciar.addEventListener('click', () => {
   }
 });
 
-// Recuperar y mostrar el carrito guardado en localStorage
-carrito.forEach(prod => crearElementoEnCarrito(prod));
+}
+
 
