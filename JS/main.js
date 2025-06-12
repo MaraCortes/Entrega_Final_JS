@@ -8,6 +8,9 @@ const productos = [
   { nombre: 'Rogel', precio: 1000, imagen: 'css/img/rogel.jpg' },
   { nombre: 'Queso y Naranja', precio: 1200, imagen: 'css/img/quesoNaranja.jpg' },
   { nombre: 'Limón y Arándanos', precio: 1300, imagen: 'css/img/tartaLimonArandanos.jpg' },
+  { nombre: 'Tiramisú', precio: 1250, imagen: 'css/img/tiramisu.jpg' },
+  { nombre: 'Queso y Naranja', precio: 1200, imagen: 'css/img/quesoNaranja.jpg' },
+  { nombre: 'Limón y Arándanos', precio: 1300, imagen: 'css/img/tartaLimonArandanos.jpg' },
   { nombre: 'Tiramisú', precio: 1250, imagen: 'css/img/tiramisu.jpg' }
 ];
 
@@ -51,7 +54,7 @@ productos.forEach(producto => {
 });
 
 
-carrito.forEach(prod => crearElementoEnCarrito(prod));
+// carrito.forEach(prod => crearElementoEnCarrito(prod));
 
 function agregarAlCarrito(producto) {
   carrito.push(producto);
@@ -109,4 +112,6 @@ btnVaciar.addEventListener('click', () => {
   }
 });
 
+// Recuperar y mostrar el carrito guardado en localStorage
+carrito.forEach(prod => crearElementoEnCarrito(prod));
 
