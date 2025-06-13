@@ -1,16 +1,16 @@
 {
   "productos": [
-    { "nombre": "Marquise", "precio": 1200, "imagen": "assets/img/marquise.jpg" },
-    { "nombre": "Lemon Pie", "precio": 1350, "imagen": "assets/img/cheeseCakeFrutos Rojos.jpg" },
-    { "nombre": "Pavlova", "precio": 1400, "imagen": "assets/img/pavlova.jpg" },
-    { "nombre": "Selva Negra", "precio": 1500, "imagen": "assets/img/selvaNegra.jpg" },
-    { "nombre": "Tarta de Frutillas", "precio": 1150, "imagen": "assets/img/tartaFrutosRojos.jpeg" },
-    { "nombre": "Rogel", "precio": 1000, "imagen": "assets/img/rogel.jpg" },
-    { "nombre": "Queso y Naranja", "precio": 1200, "imagen": "assets/img/quesoNaranja.jpg" },
-    { "nombre": "Limón y Arándanos", "precio": 1300, "imagen": "assets/img/tartaLimonArandanos.jpg" },
-    { "nombre": "Tiramisú", "precio": 1250, "imagen": "assets/img/tiramisu.jpg" },
-    { "nombre": "Queso y Naranja", "precio": 1200, "imagen": "assets/img/quesoNaranja.jpg" },
-    { "nombre": "Limón y Arándanos", "precio": 1300, "imagen": "assets/img/tartaLimonArandanos.jpg" },
-    { "nombre": "Tiramisú", "precio": 1250, "imagen": "assets/img/tiramisu.jpg" }
+    { "nombre": "Marquise", "cantidad": 1, "precio": 1200, "imagen": "assets/img/marquise.jpg" },
+    { "nombre": "Lemon Pie", "cantidad": 1, "precio": 1350, "imagen": "assets/img/cheeseCakeFrutos Rojos.jpg" },
+    { "nombre": "Pavlova", "cantidad": 1, "precio": 1400, "imagen": "assets/img/pavlova.jpg" },
+    { "nombre": "Selva Negra", "cantidad": 1, "precio": 1500, "imagen": "assets/img/selvaNegra.jpg" },
+    { "nombre": "Tarta de Frutillas", "cantidad": 1, "precio": 1150, "imagen": "assets/img/tartaFrutosRojos.jpeg" },
+    { "nombre": "Rogel", "cantidad": 1, "precio": 1000, "imagen": "assets/img/rogel.jpg" },
+    { "nombre": "Queso y Naranja", "cantidad": 1, "precio": 1200, "imagen": "assets/img/quesoNaranja.jpg" },
+    { "nombre": "Limón y Arándanos", "cantidad": 1, "precio": 1300, "imagen": "assets/img/tartaLimonArandanos.jpg" },
+    { "nombre": "Tiramisú", "cantidad": 1, "precio": 1250, "imagen": "assets/img/tiramisu.jpg" },
+    { "nombre": "Queso y Naranja", "cantidad": 1, "precio": 1200, "imagen": "assets/img/quesoNaranja.jpg" },
+    { "nombre": "Limón y Arándanos", "cantidad": 1, "precio": 1300, "imagen": "assets/img/tartaLimonArandanos.jpg" },
+    { "nombre": "Tiramisú", "cantidad": 1, "precio": 1250, "imagen": "assets/img/tiramisu.jpg" }
   ]
 } 
