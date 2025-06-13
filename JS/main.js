@@ -134,16 +134,48 @@ function inicializarPagina() {
   });
 
   btnVaciar.addEventListener('click', () => {
-    const confirmar = confirm('¿Vaciar todo el carrito?');
-    if (confirmar) {
-      carrito = [];
-      listaCarrito.innerHTML = '';
-      total = 0;
-      actualizarTotal();
-      guardarCarrito();
-    }
+    Swal.fire({
+      title: '¿Vaciar todo el carrito?',
+      text: `Esta acción eliminará todos los productos agregados`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: `Sí, vaciar`,
+      cancelButtonText: `Cancelar`
+    }).then((result) => {
+      if (result.isConfirmed) {
+        carrito = [];
+        listaCarrito.innerHTML = '';
+        total = 0;
+        actualizarTotal();
+        guardarCarrito();
+
+        Swal.fire(
+          `Carrito vaciado`,
+          `Tu carrito ahora está vacío.`,
+          `success`
+        );
+      }
+    });
   });
 
+
+
+
+
+  // const confirmar = confirm('¿Vaciar todo el carrito?');
+  // if (confirmar) {
+
+
+
+  const btnFinalizar = document.createElement(`button`);
+  btnFinalizar.textContent = `Finalizar Compra`;
+
+  carritoElemento.appendChild(btnFinalizar);
+
 }
+
+
 
 
