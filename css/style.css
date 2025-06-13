@@ -6,7 +6,6 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  /* background-color: #ece7ee; */
   background-color: #f5f5f5;
   color: #333;
   overflow-x: hidden;
@@ -37,12 +36,7 @@ h2 {
 }
 
 .image-section {
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 50px;
-  align-items: center; */
-
+  
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -53,12 +47,6 @@ h2 {
 
 
 .image-container {
-  /* display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-  margin: 50px; */
 
   background-color: white;
   border: 1px solid #ccc;
@@ -82,13 +70,10 @@ h2 {
 
 }
 
-.text-image {
-  /* background-color:#e3c8e9; */
+.text-image { 
   background-color: white;
   width: 220px;
-  height: 150px;
-  /* border-radius: 10px;
-  border: solid black; */
+  height: 150px;  
   border: 1px solid #ccc;
   border-radius: 10px;
   border-width: 2px;
@@ -100,13 +85,7 @@ h2 {
 }
 
 
-.btnComprar {
-  /* padding: 8px 10px;
-  margin-top: 20px;
-  /* border-radius: 10%; */
-  /* background-color: rgb(176, 176, 233);
-  font-size: 16px;
-  cursor: pointer;  */
+.btnComprar {  
 
   background-color: #ff6699;
   border: none;
@@ -121,8 +100,7 @@ h2 {
 
 .btnComprar:hover {
   transform: scale(1.1);
-  transition: transform 0.2s ease;
-  /* background-color: rgb(68, 68, 134); */
+  transition: transform 0.2s ease; 
   background-color: #cc3366;
 }
 
@@ -189,6 +167,63 @@ h2 {
 
 .image-section img:hover {
   transform: scale(1.02);
+}
+
+
+.btnFinalizar {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.botonesConfirmacion {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.btnSi {
+  margin-right: 10px;
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btnNo {
+  padding: 5px 10px;
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+
+.mensajeFlotante {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px;
+  border-radius: 5px;
+  display: none;
+  z-index: 1000;
+  color: white;
+}
+
+.mensajeFlotante.error {
+  background-color: #f34040;
+}
+
+.mensajeFlotante.exito {
+  background-color: #3cca41;
 }
 
 footer .infoFooter {

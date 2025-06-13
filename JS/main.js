@@ -139,8 +139,6 @@ function inicializarPagina() {
       text: `Esta acción eliminará todos los productos agregados`,
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
       confirmButtonText: `Sí, vaciar`,
       cancelButtonText: `Cancelar`
     }).then((result) => {
@@ -161,10 +159,10 @@ function inicializarPagina() {
   });
 
   const mensajeDiv = document.createElement('div');
-  mensajeDiv.className = 'mensajeFlotante'};
+  mensajeDiv.className = 'mensajeFlotante';
   document.body.appendChild(mensajeDiv);
 
-  function mostrarMensaje(texto, esError = false){
+  function mostrarMensaje(texto, esError = false) {
     mensajeDiv.textContent = texto;
     mensajeDiv.className = 'mensajeFlotante ${esError ? `error` : `exito`}';
     mensajeDiv.style.display = 'block';
@@ -175,22 +173,51 @@ function inicializarPagina() {
   }
 
 
-
-
-
   const btnFinalizar = document.createElement(`button`);
   btnFinalizar.textContent = `Finalizar Compra`;
   btnFinalizar.className = 'btnFinalizar';
   carritoElemento.appendChild(btnFinalizar);
 
   btnFinalizar.addEventListener('click', () => {
-    if(carrito.length === 0) {
-      mostrarMensaje ('El carrito está vacío', true);
+    if (carrito.length === 0) {
+      mostrarMensaje('El carrito está vacío', true);
       return;
     }
-  })
 
+    const botonesDiv = document.createElement('div');
+    botonesDiv.className = 'botonesConfirmacion';
+
+    const btnSi = document.createElement('button');
+    btnSi.textContent = 'Sí, finalizar';
+    btnSi.className = 'btnSi';
+
+    const btnNo = document.createElement('button');
+    btnNo.textContent = 'No, cancelar';
+    btnNo.className = 'btnNo';
+
+    botonesDiv.appendChild(btnSi);
+    botonesDiv.appendChild(btnNo);
+    carritoElemento.appendChild(botonesDiv);
+
+    btnSi.addEventListener('click', () => {
+      mostrarMensaje('¡Gracias por su compra!');
+      carrito = [];
+      listaCarrito.innerHTML = '';
+      total = 0;
+      actualizarTotal();
+      guardarCarrito();
+      carritoElemento.style.display = 'none';
+      botonesDiv.remove();
+    });
+
+    btnNo.addEventListener('click', () => {
+      botonesDiv.remove();
+    });
+  });
 }
+
+
+
 
 
 
