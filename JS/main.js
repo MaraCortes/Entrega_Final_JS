@@ -160,19 +160,35 @@ function inicializarPagina() {
     });
   });
 
+  const mensajeDiv = document.createElement('div');
+  mensajeDiv.className = 'mensajeFlotante'};
+  document.body.appendChild(mensajeDiv);
+
+  function mostrarMensaje(texto, esError = false){
+    mensajeDiv.textContent = texto;
+    mensajeDiv.className = 'mensajeFlotante ${esError ? `error` : `exito`}';
+    mensajeDiv.style.display = 'block';
+
+    setTimeout(() => {
+      mensajeDiv.style.display = 'none';
+    }, 3000);
+  }
 
 
-
-
-  // const confirmar = confirm('¿Vaciar todo el carrito?');
-  // if (confirmar) {
 
 
 
   const btnFinalizar = document.createElement(`button`);
   btnFinalizar.textContent = `Finalizar Compra`;
-
+  btnFinalizar.className = 'btnFinalizar';
   carritoElemento.appendChild(btnFinalizar);
+
+  btnFinalizar.addEventListener('click', () => {
+    if(carrito.length === 0) {
+      mostrarMensaje ('El carrito está vacío', true);
+      return;
+    }
+  })
 
 }
 
