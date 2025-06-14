@@ -171,21 +171,6 @@ function inicializarPagina() {
     });
   });
 
-  // const mensajeDiv = document.createElement('div');
-  // mensajeDiv.className = 'mensajeFlotante';
-  // document.body.appendChild(mensajeDiv);
-
-  // function mostrarMensaje(texto, esError = false) {
-  //   mensajeDiv.textContent = texto;
-  //   mensajeDiv.className = 'mensajeFlotante ${esError ? `error` : `exito`}';
-  //   mensajeDiv.style.display = 'block';
-
-  //   setTimeout(() => {
-  //     mensajeDiv.style.display = 'none';
-  //   }, 3000);
-  // }
-
-
   const btnFinalizar = document.createElement(`button`);
   btnFinalizar.textContent = `Finalizar Compra`;
   btnFinalizar.className = 'btnFinalizar';
@@ -193,7 +178,7 @@ function inicializarPagina() {
 
   btnFinalizar.addEventListener('click', () => {
     if (carrito.length === 0) {
-      mostrarMensaje('El carrito está vacío', true);
+      Swal.fire('El carrito está vacío', true);
       return;
     }
 
@@ -216,7 +201,6 @@ function inicializarPagina() {
         carritoElemento.style.display = 'none';
       }
     });
-
   });
 }
 

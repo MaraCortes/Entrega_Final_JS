@@ -181,51 +181,6 @@ h2 {
 }
 
 
-.botonesConfirmacion {
-  margin-top: 10px;
-  text-align: center;
-}
-
-.btnSi {
-  margin-right: 10px;
-  padding: 5px 10px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.btnNo {
-  padding: 5px 10px;
-  background-color: #ff6b6b;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-
-.mensajeFlotante {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 15px;
-  border-radius: 5px;
-  display: none;
-  z-index: 1000;
-  color: white;
-}
-
-.mensajeFlotante.error {
-  background-color: #f34040;
-}
-
-.mensajeFlotante.exito {
-  background-color: #3cca41;
-}
-
 footer .infoFooter {
   text-align: center;
   padding: 15rem;
