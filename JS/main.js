@@ -72,25 +72,38 @@ function inicializarPagina() {
     item.dataset.nombre = producto.nombre;
 
     item.addEventListener('click', () => {
-      const confirmar = confirm('¿Eliminar este producto del carrito?');
-      if (confirmar) {
-        const productoEnCarrito = carrito.find(p => p.nombre === producto.nombre);
-        if (productoEnCarrito) {
-          productoEnCarrito.cantidad--;
+      Swal.fire({
+        title: '¿Eliminar este producto?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const productoEnCarrito = carrito.find(p => p.nombre === producto.nombre);
+          if (productoEnCarrito) {
+            productoEnCarrito.cantidad--;
 
-          if (productoEnCarrito.cantidad === 0) {
-            listaCarrito.removeChild(item);
-            carrito = carrito.filter(p => p.nombre !== producto.nombre);
+            // const confirmar = confirm('¿Eliminar este producto del carrito?');
+            // if (confirmar) {
+            //   const productoEnCarrito = carrito.find(p => p.nombre === producto.nombre);
+            //   if (productoEnCarrito) {
+            //     productoEnCarrito.cantidad--;
 
-          } else {
-            item.textContent = `${producto.nombre} x${productoEnCarrito.cantidad} - $${producto.precio * productoEnCarrito.cantidad}`;
+            if (productoEnCarrito.cantidad === 0) {
+              listaCarrito.removeChild(item);
+              carrito = carrito.filter(p => p.nombre !== producto.nombre);
+
+            } else {
+              item.textContent = `${producto.nombre} x${productoEnCarrito.cantidad} - $${producto.precio * productoEnCarrito.cantidad}`;
+            }
+
+            total -= producto.precio;
+            actualizarTotal();
+            guardarCarrito();
           }
-
-          total -= producto.precio;
-          actualizarTotal();
-          guardarCarrito();
         }
-      }
+      });
     });
 
     listaCarrito.appendChild(item);
@@ -158,19 +171,19 @@ function inicializarPagina() {
     });
   });
 
-  const mensajeDiv = document.createElement('div');
-  mensajeDiv.className = 'mensajeFlotante';
-  document.body.appendChild(mensajeDiv);
+  // const mensajeDiv = document.createElement('div');
+  // mensajeDiv.className = 'mensajeFlotante';
+  // document.body.appendChild(mensajeDiv);
 
-  function mostrarMensaje(texto, esError = false) {
-    mensajeDiv.textContent = texto;
-    mensajeDiv.className = 'mensajeFlotante ${esError ? `error` : `exito`}';
-    mensajeDiv.style.display = 'block';
+  // function mostrarMensaje(texto, esError = false) {
+  //   mensajeDiv.textContent = texto;
+  //   mensajeDiv.className = 'mensajeFlotante ${esError ? `error` : `exito`}';
+  //   mensajeDiv.style.display = 'block';
 
-    setTimeout(() => {
-      mensajeDiv.style.display = 'none';
-    }, 3000);
-  }
+  //   setTimeout(() => {
+  //     mensajeDiv.style.display = 'none';
+  //   }, 3000);
+  // }
 
 
   const btnFinalizar = document.createElement(`button`);
@@ -184,35 +197,26 @@ function inicializarPagina() {
       return;
     }
 
-    const botonesDiv = document.createElement('div');
-    botonesDiv.className = 'botonesConfirmacion';
 
-    const btnSi = document.createElement('button');
-    btnSi.textContent = 'Sí, finalizar';
-    btnSi.className = 'btnSi';
-
-    const btnNo = document.createElement('button');
-    btnNo.textContent = 'No, cancelar';
-    btnNo.className = 'btnNo';
-
-    botonesDiv.appendChild(btnSi);
-    botonesDiv.appendChild(btnNo);
-    carritoElemento.appendChild(botonesDiv);
-
-    btnSi.addEventListener('click', () => {
-      mostrarMensaje('¡Gracias por su compra!');
-      carrito = [];
-      listaCarrito.innerHTML = '';
-      total = 0;
-      actualizarTotal();
-      guardarCarrito();
-      carritoElemento.style.display = 'none';
-      botonesDiv.remove();
+    Swal.fire({
+      title: '¿Finalizar compra?',
+      text: '¿Desea confirmar su compra?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, finalizar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire('¡Gracias por su compra!', '', 'success');
+        carrito = [];
+        listaCarrito.innerHTML = '';
+        total = 0;
+        actualizarTotal();
+        guardarCarrito();
+        carritoElemento.style.display = 'none';
+      }
     });
 
-    btnNo.addEventListener('click', () => {
-      botonesDiv.remove();
-    });
   });
 }
 
