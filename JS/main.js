@@ -82,13 +82,7 @@ function inicializarPagina() {
         if (result.isConfirmed) {
           const productoEnCarrito = carrito.find(p => p.nombre === producto.nombre);
           if (productoEnCarrito) {
-            productoEnCarrito.cantidad--;
-
-            // const confirmar = confirm('¿Eliminar este producto del carrito?');
-            // if (confirmar) {
-            //   const productoEnCarrito = carrito.find(p => p.nombre === producto.nombre);
-            //   if (productoEnCarrito) {
-            //     productoEnCarrito.cantidad--;
+            productoEnCarrito.cantidad--;           
 
             if (productoEnCarrito.cantidad === 0) {
               listaCarrito.removeChild(item);
