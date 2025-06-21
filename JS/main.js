@@ -1,17 +1,17 @@
 
 let productos = [];
 
-fetch(`../assets/json/productos.json`)
+fetch(`assets/json/productos.json`)
   .then(response => response.json())
   .then(data => {
     productos = data.productos;
     inicializarPagina();
   })
 
-  .catch(error => console.error("Error al cargar los productos", error));
+  .catch(error => console.error('Error al cargar los productos', error));
 
 function inicializarPagina() {
-  const contenedor = document.getElementById(`productos`);
+  const contenedor = document.getElementById('productos');
   const listaCarrito = document.getElementById('listaCarrito');
   const totalElemento = document.getElementById('total');
   const btnVaciar = document.getElementById('vaciarCarrito');
@@ -19,7 +19,7 @@ function inicializarPagina() {
   const carritoElemento = document.getElementById('carrito');
 
   let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-  let total = carrito.reduce((acc, prod) => acc + prod.precio, 0);
+  let total = carrito.reduce((acc, prod) => acc + (prod.precio * prod.cantidad), 0);
   actualizarTotal();
 
 
@@ -52,7 +52,7 @@ function inicializarPagina() {
   carrito.forEach(prod => crearElementoEnCarrito(prod));
 
   function agregarAlCarrito(producto) {
-    const productoExistente = carrito.find(p => p.nombre == producto.nombre);
+    const productoExistente = carrito.find(p => p.nombre === producto.nombre);
     if (productoExistente) {
       productoExistente.cantidad = (productoExistente.cantidad || 1) + 1;
       actualizarElementoCarrito(productoExistente);
@@ -141,7 +141,7 @@ function inicializarPagina() {
   });
 
 
-  btnVaciar.addEventListener(`click`, () => {
+  btnVaciar.addEventListener('click', () => {
     if (carrito.length === 0) {
       Swal.fire({
         title: 'Carrito vacío',
@@ -154,11 +154,11 @@ function inicializarPagina() {
 
     Swal.fire({
       title: '¿Vaciar todo el carrito?',
-      text: `Esta acción eliminará todos los productos agregados`,
-      icon: "warning",
+      text: 'Esta acción eliminará todos los productos agregados',
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: `Sí, vaciar`,
-      cancelButtonText: `Cancelar`
+      confirmButtonText: 'Sí, vaciar',
+      cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
         carrito = [];
@@ -168,16 +168,16 @@ function inicializarPagina() {
         guardarCarrito();
 
         Swal.fire(
-          `Carrito vaciado`,
-          `Tu carrito ahora está vacío.`,
-          `success`
+          'Carrito vacío',
+          'Tu carrito ahora no tiene productos.',
+          'success'
         );
       }
     });
   });
 
-  const btnFinalizar = document.createElement(`button`);
-  btnFinalizar.textContent = `Finalizar Compra`;
+  const btnFinalizar = document.createElement('button');
+  btnFinalizar.textContent = 'Finalizar Compra';
   btnFinalizar.className = 'btnFinalizar';
   carritoElemento.appendChild(btnFinalizar);
 
@@ -204,7 +204,7 @@ function inicializarPagina() {
       if (result.isConfirmed) {
         Swal.fire({
           title: '¡Gracias por su compra!',
-          html: 'Tu pedido ha sido procesado con éxito. <br>Pronto recibirás un correo con los detalles de tu compra',
+          html: 'Tu pedido ha sido procesado con éxito. <br>Pronto recibirás un correo con los detalles de tu factura.',
           icon: 'success',
           confirmButtonText: 'Seguir comprando'
 
