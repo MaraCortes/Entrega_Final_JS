@@ -107,7 +107,7 @@ h2 {
 .btnVaciar {
   background-color: #ff6699;
   border: none;
-  padding: 10px 20px;
+  padding: 8px 15px;
   color: white;
   border-radius: 5px;
   cursor: pointer;
@@ -169,6 +169,33 @@ h2 {
   transform: scale(1.02);
 }
 
+.btn-mas, .btn-menos {
+  background-color: #ff6699;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 5px;
+  margin-right: 5px;
+  /* transition: background 0.2s, transform 0.2s; */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-mas:hover, .btn-menos:hover {
+  background-color: #cc3366;
+  transform: scale(1.1);
+}
+
+#listaCarrito li span {
+  margin-right: 10px;
+}
 
 .btnFinalizar {
   margin-top: 10px;

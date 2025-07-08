@@ -22,6 +22,7 @@ function inicializarPagina() {
   let total = carrito.reduce((acc, prod) => acc + (prod.precio * prod.cantidad), 0);
   actualizarTotal();
 
+  const botonesAgregar = {};
 
 
   productos.forEach(producto => {
@@ -36,13 +37,24 @@ function inicializarPagina() {
     <div class="text-image">
       <h2>${producto.nombre}</h2>
       <p class="precio"><strong>$${producto.precio}</strong></p>
-      <button class="btnComprar">COMPRAR</button>
+      <button class="btnComprar">AGREGAR AL CARRITO</button>
     </div>
   `;
 
     const boton = div.querySelector('.btnComprar');
+
+    botonesAgregar[producto.nombre] = boton;
+
+    if (carrito.find(p => p.nombre === producto.nombre)) {
+      boton.disabled = true;
+      boton.textContent = 'EN CARRITO';
+    }
+
+
     boton.addEventListener('click', () => {
       agregarAlCarrito(producto);
+      boton.disabled = true;
+      boton.textContent = 'EN CARRITO';
     });
 
     contenedor.appendChild(div);
@@ -54,8 +66,9 @@ function inicializarPagina() {
   function agregarAlCarrito(producto) {
     const productoExistente = carrito.find(p => p.nombre === producto.nombre);
     if (productoExistente) {
-      productoExistente.cantidad = (productoExistente.cantidad || 1) + 1;
-      actualizarElementoCarrito(productoExistente);
+
+      return;
+
     } else {
       producto.cantidad = 1;
       carrito.push(producto);
@@ -68,38 +81,56 @@ function inicializarPagina() {
 
   function crearElementoEnCarrito(producto) {
     const item = document.createElement('li');
-    item.textContent = `${producto.nombre} x ${producto.cantidad} - $${producto.precio * producto.cantidad}`;
     item.dataset.nombre = producto.nombre;
 
-    item.addEventListener('click', () => {
-      Swal.fire({
-        title: '¿Eliminar este producto?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Sí, eliminar',
-        cancelButtonText: 'Cancelar'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          const productoEnCarrito = carrito.find(p => p.nombre === producto.nombre);
-          if (productoEnCarrito) {
-            productoEnCarrito.cantidad--;
+    const nombreSpan = document.createElement('span');
+    nombreSpan.textContent = `${producto.nombre} x ${producto.cantidad} - $${producto.precio * producto.cantidad}`;
 
-            if (productoEnCarrito.cantidad === 0) {
-              listaCarrito.removeChild(item);
-              carrito = carrito.filter(p => p.nombre !== producto.nombre);
+    const btnMas = document.createElement('button');
+    btnMas.textContent = '+';
+    btnMas.className = 'btn-mas';
 
-            } else {
-              item.textContent = `${producto.nombre} x${productoEnCarrito.cantidad} - $${producto.precio * productoEnCarrito.cantidad}`;
-            }
+    const btnMenos = document.createElement('button');
+    btnMenos.textContent = '-';
+    btnMenos.className = 'btn-menos';
 
-            total -= producto.precio;
-            actualizarTotal();
-            guardarCarrito();
-          }
-        }
-      });
+    btnMas.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const productoEnCarrito = carrito.find(p => p.nombre === producto.nombre);
+      if (productoEnCarrito) {
+        productoEnCarrito.cantidad++;
+        nombreSpan.textContent = `${producto.nombre} x ${productoEnCarrito.cantidad} - $${producto.precio * productoEnCarrito.cantidad}`;
+        total += producto.precio;
+        actualizarTotal();
+        guardarCarrito();
+      }
     });
 
+    btnMenos.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const productoEnCarrito = carrito.find(p => p.nombre === producto.nombre);
+      if (productoEnCarrito) {
+        productoEnCarrito.cantidad--;
+        total -= producto.precio;
+        if (productoEnCarrito.cantidad === 0) {
+          listaCarrito.removeChild(item);
+          carrito = carrito.filter(p => p.nombre !== producto.nombre);
+
+          if (botonesAgregar[producto.nombre]) {
+            botonesAgregar[producto.nombre].disabled = false;
+            botonesAgregar[producto.nombre].textContent = 'AGREGAR AL CARRITO';
+          }
+        } else {
+          nombreSpan.textContent = `${producto.nombre} x ${productoEnCarrito.cantidad} - $${producto.precio * productoEnCarrito.cantidad}`;
+        }
+        actualizarTotal();
+        guardarCarrito();
+      }
+    });
+
+    item.appendChild(nombreSpan);
+    item.appendChild(btnMas);
+    item.appendChild(btnMenos);
     listaCarrito.appendChild(item);
   }
 
