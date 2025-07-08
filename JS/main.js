@@ -15,6 +15,7 @@ function inicializarPagina() {
   const listaCarrito = document.getElementById('listaCarrito');
   const totalElemento = document.getElementById('total');
   const btnVaciar = document.getElementById('vaciarCarrito');
+  const btnFinalizar = document.getElementById('finalizarCompra');
   const iconoCarrito = document.getElementById('iconoCarrito');
   const carritoElemento = document.getElementById('carrito');
 
@@ -207,7 +208,7 @@ function inicializarPagina() {
     });
   });
 
-  const btnFinalizar = document.createElement('button');
+  // const btnFinalizar = document.createElement('button');
   btnFinalizar.textContent = 'Finalizar Compra';
   btnFinalizar.className = 'btnFinalizar';
   carritoElemento.appendChild(btnFinalizar);

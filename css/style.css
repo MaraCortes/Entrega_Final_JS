@@ -153,6 +153,10 @@ h2 {
 
 
 #listaCarrito li {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
   list-style: none;
   border-bottom: 1px solid #eee;
   padding: 5px 0;
@@ -162,6 +166,13 @@ h2 {
 
 #listaCarrito li:hover {
   background-color: #ffe5e5;
+}
+
+.botones-carrito-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  /* margin-top: 10px; */
 }
 
 
@@ -194,7 +205,7 @@ h2 {
 }
 
 #listaCarrito li span {
-  margin-right: 10px;
+  flex: 1;
 }
 
 .btnFinalizar {
