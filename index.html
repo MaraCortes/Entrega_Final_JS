@@ -42,6 +42,28 @@
 
     </section>
 
+    <div id="modalCheckout" class="modal" style="display: none;">
+      <div class="modal-content">
+        <button class="cerrar" id="cerrarModalCheckout">X</button>
+        <h3>Finalizar Compra</h3>
+        <form id="checkoutForm">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required>
+          <label for="direccion">Domicilio</label>
+          <input type="text" id="direccion" name="direccion" required>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+          <h4>Resumen de Compra</h4>
+          <ul id="resumenCompra"></ul>
+          <p id="totalCheckout"></p>
+          <button type="submit">Confirmar Compra</button>
+        </form>
+
+      </div>
+
+
+    </div>
+
   </main>
 
   <footer>
