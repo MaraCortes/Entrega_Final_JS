@@ -225,32 +225,135 @@ function inicializarPagina() {
     }
 
 
-    Swal.fire({
-      title: '¿Finalizar compra?',
-      text: '¿Desea confirmar su compra?',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Sí, finalizar',
-      cancelButtonText: 'Cancelar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: '¡Gracias por su compra!',
-          html: 'Tu pedido ha sido procesado con éxito. <br>Pronto recibirás un correo con los detalles de tu factura.',
-          icon: 'success',
-          confirmButtonText: 'Seguir comprando'
+    // Swal.fire({
+    //   title: '¿Finalizar compra?',
+    //   text: '¿Desea confirmar su compra?',
+    //   icon: 'question',
+    //   showCancelButton: true,
+    //   confirmButtonText: 'Sí, finalizar',
+    //   cancelButtonText: 'Cancelar'
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+    //     Swal.fire({
+    //       title: '¡Gracias por su compra!',
+    //       html: 'Tu pedido ha sido procesado con éxito. <br>Pronto recibirás un correo con los detalles de tu factura.',
+    //       icon: 'success',
+    //       confirmButtonText: 'Seguir comprando'
 
-        });
-        carrito = [];
-        listaCarrito.innerHTML = '';
-        total = 0;
-        actualizarTotal();
-        guardarCarrito();
-        carritoElemento.style.display = 'none';
-      }
-    });
+    //     });
+    //     carrito = [];
+    //     listaCarrito.innerHTML = '';
+    //     total = 0;
+    //     actualizarTotal();
+    //     guardarCarrito();
+    //     carritoElemento.style.display = 'none';
+    //   }
+    // });
   });
 }
+
+
+//Modal de checkout
+const modalCheckout = document.getElementById('modalCheckout');
+const cerrarModalCheckout = document.getElementById('cerrarModalCheckout');
+const checkoutForm = document.getElementById('checkoutForm');
+const resumenCompra = document.getElementById('resumenCompra');
+const totalCheckout = document.getElementById('totalCheckout');
+
+
+//MOstrar Modal al finalizar Compra
+document.getElementById('finalizarCompra').addEventListener('click', function (e){
+  e.preventDefault();
+  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  if (carrito.length === 0) return;
+
+
+  //COmpletar Resumen
+  resumenCompra.innerHTML = '';
+  let total = 0;
+  carrito.forEach(item => {
+    const li = document.createElement('li');
+    // li.textContent =  `${item.nombre} x${item.cantidad} - $${item.precio * item.cantidad}`;
+    actualizarElementoCarrito();
+    resumenCompra.appendChild(li);
+    total += item.precio * item.cantidad;
+  });
+  totalCheckout.textContent = `Total: $${total}`;
+
+  modalCheckout.style.display = 'block';
+});
+
+
+//Fin MOdal
+cerrarModalCheckout.onclick = function() {
+  modalCheckout.style.display = 'none';  
+};
+
+window.onclick = function(event) {
+  if(event.target == modalCheckout) {
+    modalCheckout.style.display = 'none';
+  }
+};
+
+//Evento en el Formulario
+checkoutForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+
+  //Datos del usuario
+  const nombre = document.getElementById('nombre').value;
+  const direccion = document.getElementById('direccion').value;
+  const email = document.getElementById('email').value;
+
+
+  //Obtener los productos del carritio
+  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  let total = 0;
+
+  //Completar el simil recibo
+  document.getElementById('reciboNombre').textContent = nombre;
+  document.getElementById('reciboDireccion').textContent = direccion;
+  document.getElementById('reciboEmail').textContent = email;
+
+  const reciboProductos = document.getElementById('reciboProductos');
+  reciboProductos.innerHTML = '';
+  carrito.forEach(item => {
+    const li = document.createElement('li');
+
+    //  li.textContent = `${item.nombre} x${item.cantidad} - $${item.precio * item.cantidad}`;
+
+    actualizarElementoCarrito();
+
+    reciboProductos.appendChild(li);
+    total += item.precio * item.cantidad;
+  });
+  document.getElementById('reciboTotal').textContent = `Total: $${total}`;
+
+
+  //ocultar el form y mostrar el recibo
+  checkoutForm.style.display = 'none';
+  document.getElementById('reciboCompra').style.display = 'block';
+
+  //Vaciar el carrito de compras
+  localStorage.removeItem('carrito');
+
+  // modalCheckout.style.display = 'none';
+  // location.reload(); //refresca para actualizar el carrito?
+});
+
+//Cerrar el recibo y el modal
+const cerrarReciboBtn = document.getElementById('cerrarRecibo');
+if(cerrarReciboBtn) {
+  cerrarReciboBtn.addEventListener('click', function() {
+    document.getElementById('modalCheckout').style.display = 'none';
+    location.reload();
+  })
+}
+
+
+
+      
+
 
 
 
