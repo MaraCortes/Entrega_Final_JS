@@ -202,7 +202,7 @@ function inicializarPagina() {
         Object.values(botonesAgregar).forEach(boton => {
           boton.disabled = false;
           boton.textContent = 'AGREGAR AL CARRITO';
-        });
+        }); 
 
         Swal.fire(
           'Carrito vacío',
