@@ -100,7 +100,8 @@ function inicializarPagina() {
       const productoEnCarrito = carrito.find(p => p.nombre === producto.nombre);
       if (productoEnCarrito) {
         productoEnCarrito.cantidad++;
-        nombreSpan.textContent = `${producto.nombre} x ${productoEnCarrito.cantidad} - $${producto.precio * productoEnCarrito.cantidad}`;
+        // nombreSpan.textContent = `${producto.nombre} x ${productoEnCarrito.cantidad} - $${producto.precio * productoEnCarrito.cantidad}`;
+        actualizarElementoCarrito(productoEnCarrito);
         total += producto.precio;
         actualizarTotal();
         guardarCarrito();
@@ -122,7 +123,8 @@ function inicializarPagina() {
             botonesAgregar[producto.nombre].textContent = 'AGREGAR AL CARRITO';
           }
         } else {
-          nombreSpan.textContent = `${producto.nombre} x ${productoEnCarrito.cantidad} - $${producto.precio * productoEnCarrito.cantidad}`;
+          // nombreSpan.textContent = `${producto.nombre} x ${productoEnCarrito.cantidad} - $${producto.precio * productoEnCarrito.cantidad}`;
+          actualizarElementoCarrito(productoEnCarrito);
         }
         actualizarTotal();
         guardarCarrito();
@@ -139,7 +141,11 @@ function inicializarPagina() {
   function actualizarElementoCarrito(producto) {
     const item = listaCarrito.querySelector(`li[data-nombre="${producto.nombre}"]`);
     if (item) {
-      item.textContent = `${producto.nombre} x${producto.cantidad} - $${producto.precio * producto.cantidad}`;
+      // item.textContent = `${producto.nombre} x${producto.cantidad} - $${producto.precio * producto.cantidad}`;
+      const nombreSpan = item.querySelector('span');
+      if (nombreSpan) {
+        nombreSpan.textContent = `${producto.nombre} x ${producto.cantidad} - $${producto.precio * producto.cantidad}`;
+      }
 
     }
   }
@@ -306,9 +312,37 @@ checkoutForm.addEventListener('submit', function(e) {
 
 
   //Datos del usuario
-  const nombre = document.getElementById('nombre').value;
-  const direccion = document.getElementById('direccion').value;
-  const email = document.getElementById('email').value;
+  const nombre = document.getElementById('nombre').value.trim();
+  const direccion = document.getElementById('direccion').value.trim();
+  const email = document.getElementById('email').value.trim();
+
+  if (!/^[a-zA-Z ]+$/.test(nombre) || nombre === "") {
+    Swal.fire({
+      title: 'Nombre inválido',
+      text: 'El nombre solo puede contener letras y espacios.',
+      icon: 'error'
+    });
+    return;
+  }
+
+  if(direccion === "") {
+    Swal.fire({
+      title: 'Dirección inválida',
+      text: 'La dirección no puede estra vacía',
+      icon:'error'
+    });
+    return;
+  }
+
+  if(email === "" || !email.includes("@")|| !email.includes(".")) {
+    Swal.fire({
+      title: 'Email inválido',
+      text: 'Por favor, ingrese un email válido',
+      icon:'error'
+
+    });
+    return;
+  }
 
 
   //Obtener los productos del carritio
