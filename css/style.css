@@ -219,6 +219,40 @@ h2 {
 }
 
 
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: #000;  
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+
+}
+
+.cerrar {
+  color: #aaa;
+  position: absolute;
+  right: 16px;
+  top: 8px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cerrar:hover {color: #000;}
+
+
 footer .infoFooter {
   text-align: center;
   padding: 15rem;
