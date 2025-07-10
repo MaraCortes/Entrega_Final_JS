@@ -235,26 +235,85 @@ h2 {
 .modal-content {
   background-color: #fff;
   margin: 5% auto;
-  padding: 20px 30px;
-  border-radius: 8px;
+  /* padding: 20px 30px;
+  border-radius: 8px; */
+  padding: 30px 30px 20px 30px;
+  border-radius: 10px;
   width: 90%;
   max-width: 400px;
   position: relative;
+  box-shadow: 0 4px 24px rgb(61, 59, 59);
 
 }
 
 .cerrar {
   color: #aaa;
   position: absolute;
-  right: 16px;
-  top: 8px;
-  font-size: 28px;
+  right: 18px;
+  top: 14px;
+  font-size: 22px;
   font-weight: bold;
+  background: #f2f2f2;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  z-index: 10;
 }
 
 .cerrar:hover {
+  background: #e0e0e0;
   color: #000;
+}
+
+#checkoutForm h3, #reciboCompra h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: 1.3em;
+  color: #4CAF50;
+}
+
+#checkoutForm input {
+  width: 100%;
+  padding: 7px 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+#checkoutForm button[type="submit"] {
+  width: 100%;
+  padding: 10px 0;
+  background: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5%;
+  font-size: 1.08em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  /* transition: background 0.2s; */
+}
+
+#checkoutForm button[type="submit"]:hover {
+  background: #388E3C;
+}
+
+#checkoutForm h4, #reciboCompra h4 {
+  margin: 14px 0 6px 0;
+  font-size: 1.08em;
+  color: #333;
+}
+
+#resumenCompra, #reciboProductos {
+  margin-bottom: 8px;
+
 }
 
 
@@ -264,11 +323,6 @@ h2 {
   padding: 10px;
 }
 
-#reciboCompra h3 {
-  margin-top: 0;
-  color: #4CAF50;
-  font-size: 1.3em;
-}
 
 #reciboCompra p {
   margin: 6px 0;

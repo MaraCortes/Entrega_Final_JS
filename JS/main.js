@@ -199,6 +199,11 @@ function inicializarPagina() {
         actualizarTotal();
         guardarCarrito();
 
+        Object.values(botonesAgregar).forEach(boton => {
+          boton.disabled = false;
+          boton.textContent = 'AGREGAR AL CARRITO';
+        });
+
         Swal.fire(
           'Carrito vacío',
           'Tu carrito ahora no tiene productos.',
