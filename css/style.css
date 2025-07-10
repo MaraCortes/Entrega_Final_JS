@@ -36,7 +36,7 @@ h2 {
 }
 
 .image-section {
-  
+
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -70,10 +70,10 @@ h2 {
 
 }
 
-.text-image { 
+.text-image {
   background-color: white;
   width: 220px;
-  height: 150px;  
+  height: 150px;
   border: 1px solid #ccc;
   border-radius: 10px;
   border-width: 2px;
@@ -85,7 +85,7 @@ h2 {
 }
 
 
-.btnComprar {  
+.btnComprar {
 
   background-color: #ff6699;
   border: none;
@@ -100,7 +100,7 @@ h2 {
 
 .btnComprar:hover {
   transform: scale(1.1);
-  transition: transform 0.2s ease; 
+  transition: transform 0.2s ease;
   background-color: #cc3366;
 }
 
@@ -111,7 +111,7 @@ h2 {
   color: white;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 10px;  
+  margin-top: 10px;
 }
 
 
@@ -180,7 +180,8 @@ h2 {
   transform: scale(1.02);
 }
 
-.btn-mas, .btn-menos {
+.btn-mas,
+.btn-menos {
   background-color: #ff6699;
   color: #fff;
   border: none;
@@ -193,13 +194,14 @@ h2 {
   margin-left: 5px;
   margin-right: 5px;
   /* transition: background 0.2s, transform 0.2s; */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
-.btn-mas:hover, .btn-menos:hover {
+.btn-mas:hover,
+.btn-menos:hover {
   background-color: #cc3366;
   transform: scale(1.1);
 }
@@ -223,10 +225,11 @@ h2 {
   display: none;
   position: fixed;
   z-index: 1000;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   overflow: auto;
-  background-color: #000;  
 }
 
 .modal-content {
@@ -250,7 +253,9 @@ h2 {
   cursor: pointer;
 }
 
-.cerrar:hover {color: #000;}
+.cerrar:hover {
+  color: #000;
+}
 
 
 /*estilos para el recibo*/
@@ -262,12 +267,12 @@ h2 {
 #reciboCompra h3 {
   margin-top: 0;
   color: #4CAF50;
-  font-size: 1.3em;  
+  font-size: 1.3em;
 }
 
 #reciboCompra p {
   margin: 6px 0;
-  font-size: 1em;  
+  font-size: 1em;
 }
 
 #reciboCompra ul {
@@ -298,7 +303,7 @@ h2 {
   border-radius: 5px;
   font-size: 1em;
   cursor: pointer;
-/* transition: background 0.2s;   */
+  /* transition: background 0.2s;   */
 }
 
 #cerrarRecibo:hover {
