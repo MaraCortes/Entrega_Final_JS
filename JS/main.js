@@ -273,8 +273,8 @@ document.getElementById('finalizarCompra').addEventListener('click', function (e
   let total = 0;
   carrito.forEach(item => {
     const li = document.createElement('li');
-    // li.textContent =  `${item.nombre} x${item.cantidad} - $${item.precio * item.cantidad}`;
-    actualizarElementoCarrito();
+    li.textContent =  `${item.nombre} x${item.cantidad} - $${item.precio * item.cantidad}`;
+    // actualizarElementoCarrito();
     resumenCompra.appendChild(li);
     total += item.precio * item.cantidad;
   });
@@ -320,9 +320,9 @@ checkoutForm.addEventListener('submit', function(e) {
   carrito.forEach(item => {
     const li = document.createElement('li');
 
-    //  li.textContent = `${item.nombre} x${item.cantidad} - $${item.precio * item.cantidad}`;
+  li.textContent = `${item.nombre} x${item.cantidad} - $${item.precio * item.cantidad}`;
 
-    actualizarElementoCarrito();
+    // actualizarElementoCarrito();
 
     reciboProductos.appendChild(li);
     total += item.precio * item.cantidad;
@@ -336,9 +336,7 @@ checkoutForm.addEventListener('submit', function(e) {
 
   //Vaciar el carrito de compras
   localStorage.removeItem('carrito');
-
-  // modalCheckout.style.display = 'none';
-  // location.reload(); //refresca para actualizar el carrito?
+  
 });
 
 //Cerrar el recibo y el modal
@@ -347,7 +345,7 @@ if(cerrarReciboBtn) {
   cerrarReciboBtn.addEventListener('click', function() {
     document.getElementById('modalCheckout').style.display = 'none';
     location.reload();
-  })
+  });
 }
 
 
